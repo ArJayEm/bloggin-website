@@ -10,8 +10,8 @@ export default function Socials() {
     <>
       <Navigation />
       <Container>
-        <SocialsSection />
         <DeveloperSection/>
+        <SocialsSection />
       </Container>
     </>
   );
