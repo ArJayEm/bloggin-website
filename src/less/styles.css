@@ -188,6 +188,7 @@ body #root.mobile .container .socials-container {
 html #root.mobile .container .socials-container .card,
 body #root.mobile .container .socials-container .card {
   flex-direction: column;
+  column-gap: 0;
 }
 html #root.mobile .container .socials-container .social,
 body #root.mobile .container .socials-container .social {
@@ -991,7 +992,8 @@ button.form-control:focus {
 }
 .socials-container .card {
   display: flex;
-  gap: 2em;
+  column-gap: 2em;
+  row-gap: 1em;
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
@@ -1039,6 +1041,10 @@ button.form-control:focus {
   grid-area: icon;
   aspect-ratio: 1;
   width: 10em;
+  background-color: #041c2d;
+  border-radius: 50%;
+  padding: 0.5em;
+  margin-bottom: 1em;
 }
 .developer-container .card .app-logo h2 {
   color: #fbd12f;
