@@ -1,8 +1,9 @@
 import React from "react";
 import { isMobile } from "react-device-detect";
 import { imageLoading } from "../../icons/index";
+import parse from "html-react-parser";
 
-export default function EventCard({ event, index, id }) {
+export default function EventCard({ event, index, id, isSelected }) {
   var last = event.eventDays.slice(event.eventDays.length - 1);
   var isOneDay = event.eventDays.length === 1;
   const days =
@@ -12,22 +13,24 @@ export default function EventCard({ event, index, id }) {
     (!isOneDay ? " & " : " ") +
     last;
 
-  return (
-    <div className="event-card card" key={index} title="Read morevent...">
-      <div className="description">
-        <h2>{event.title}</h2>
-        <h4>
-          {event.startDate.toDateFormat({ format: "mmm dd" })} -{" "}
-          {event.endDate.toDateFormat()}
-        </h4>
-        <h5>
-          <span>Attended: {days}</span>
-          {/* <span>{event.postedDate}</span> */}
-        </h5>
-        <p>{event.description}</p>
-        <strong className="read-more">Read morevent...</strong>
-      </div>
-      {!id && (
+  function card() {
+    return (
+      <div className={"event-card card" + (isSelected ? " selected" : "")} key={index} title="Read more...">
+        <div className="description">
+          <h2>{event.title}</h2>
+          <h4>
+            {event.startDate.toDateFormat({ format: "mmm dd" })} -{" "}
+            {event.endDate.toDateFormat()}
+          </h4>
+          <h5>
+            <span>Attended: {days}</span>
+            {/* <span>{event.postedDate}</span> */}
+          </h5>
+          <p>{parse(event.description)}</p>
+          <strong className="read-more">See more...</strong>
+        </div>
+        {/* {!id && (
+    )} */}
         <div
           className="thumbnail"
           data-src={event.thumbnail}
@@ -37,7 +40,9 @@ export default function EventCard({ event, index, id }) {
             backgroundSize: isMobile ? "cover" : "contain",
           }}
         ></div>
-      )}
-    </div>
-  );
+      </div>
+    );
+  }
+
+  return !isSelected ? <a href={"/events/" + event.id} key={index}>{card()}</a> : card();
 }

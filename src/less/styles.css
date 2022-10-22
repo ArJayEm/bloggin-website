@@ -124,6 +124,10 @@ html #root.mobile .container .events-container.view-event .event-links,
 body #root.mobile .container .events-container.view-event .event-links {
   gap: 0.5em;
 }
+html #root.mobile .container .events-container.view-event .event-links .event-card .description,
+body #root.mobile .container .events-container.view-event .event-links .event-card .description {
+  font-size: 0.5rem;
+}
 html #root.mobile .container .events-container.view-event .event-links .event-card .thumbnail,
 body #root.mobile .container .events-container.view-event .event-links .event-card .thumbnail {
   display: none;
@@ -135,12 +139,18 @@ body #root.mobile .container .events-container .event-links {
 }
 html #root.mobile .container .events-container .event-links a,
 body #root.mobile .container .events-container .event-links a {
-  width: 100%;
+  width: 45%;
 }
 html #root.mobile .container .events-container .event-links a .event-card,
 body #root.mobile .container .events-container .event-links a .event-card {
   width: 100%;
   margin: 0 auto;
+}
+html #root.mobile .container .events-container .event-links a .event-card p,
+body #root.mobile .container .events-container .event-links a .event-card p,
+html #root.mobile .container .events-container .event-links a .event-card strong,
+body #root.mobile .container .events-container .event-links a .event-card strong {
+  display: none;
 }
 html #root.mobile .container .events-container .controls,
 body #root.mobile .container .events-container .controls {
@@ -182,6 +192,14 @@ body #root.mobile .container .socials-container .card {
 html #root.mobile .container .socials-container .social,
 body #root.mobile .container .socials-container .social {
   width: 100%;
+}
+html #root.mobile .container .developer-container .card,
+body #root.mobile .container .developer-container .card {
+  grid-template-areas: "icon" "description";
+  grid-template-columns: 100%;
+  column-gap: 0;
+  row-gap: 2em;
+  text-align: center;
 }
 html #root.mobile #socials,
 body #root.mobile #socials {
@@ -710,6 +728,9 @@ button.form-control:focus {
 .text-danger {
   color: #f5222d;
 }
+.text-success {
+  color: #52c41a;
+}
 .passwordStrengthBar {
   height: 1px;
   padding: 0.5em 0;
@@ -819,6 +840,35 @@ button.form-control:focus {
   overflow: hidden;
   background-color: #08324c;
 }
+.events-container.view-event .event-links.list-view .card,
+.gallery-container.view-event .event-links.list-view .card {
+  width: 100%;
+  display: grid;
+  grid-template-areas: "thumbnail description";
+  grid-template-columns: 10em auto;
+}
+.events-container.view-event .event-links.list-view .card.selected,
+.gallery-container.view-event .event-links.list-view .card.selected {
+  background-color: #fbd12f;
+  color: #08324c;
+  scale: 1;
+}
+.events-container.view-event .event-links.list-view .card .description,
+.gallery-container.view-event .event-links.list-view .card .description {
+  grid-area: description;
+  font-size: 1rem;
+}
+.events-container.view-event .event-links.list-view .card .thumbnail,
+.gallery-container.view-event .event-links.list-view .card .thumbnail {
+  grid-area: thumbnail;
+  height: 100%;
+}
+.events-container.view-event .event-links.list-view .card p,
+.gallery-container.view-event .event-links.list-view .card p,
+.events-container.view-event .event-links.list-view .card .read-more,
+.gallery-container.view-event .event-links.list-view .card .read-more {
+  display: none;
+}
 .events-container .event-links,
 .gallery-container .event-links {
   display: flex;
@@ -839,6 +889,37 @@ button.form-control:focus {
 .events-container .event-links .add-card:focus,
 .gallery-container .event-links .add-card:focus {
   filter: brightness(90%);
+}
+.events-container .event-links.list-view a,
+.gallery-container .event-links.list-view a {
+  width: 100%;
+}
+.events-container .event-links.list-view a.add-card,
+.gallery-container .event-links.list-view a.add-card {
+  aspect-ratio: 16 / 5;
+}
+.events-container .event-links.list-view a .card,
+.gallery-container .event-links.list-view a .card {
+  display: grid;
+  width: unset !important;
+  grid-template-areas: "thumbnail description";
+  grid-template-columns: 20em auto;
+}
+.events-container .event-links.list-view a .card .description,
+.gallery-container .event-links.list-view a .card .description {
+  grid-area: description;
+  height: 100%;
+}
+.events-container .event-links.list-view a .card .description h2,
+.gallery-container .event-links.list-view a .card .description h2,
+.events-container .event-links.list-view a .card .description p,
+.gallery-container .event-links.list-view a .card .description p {
+  white-space: normal;
+}
+.events-container .event-links.list-view a .card .thumbnail,
+.gallery-container .event-links.list-view a .card .thumbnail {
+  grid-area: thumbnail;
+  height: 100%;
 }
 .events-container .event-links .event-card,
 .gallery-container .event-links .event-card {
@@ -922,9 +1003,8 @@ button.form-control:focus {
 }
 .socials-container .social a {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 0.5em;
+  gap: 1em;
   margin-bottom: 0.5em;
   color: #fbd12f;
 }
@@ -936,6 +1016,52 @@ button.form-control:focus {
 .socials-container .social a .icon {
   width: 1.5em;
   aspect-ratio: 1;
+}
+.developer-container {
+  width: 100%;
+  margin-top: 1em;
+}
+.developer-container .card {
+  display: grid;
+  grid-template-areas: "icon description";
+  grid-template-columns: 25% auto;
+  column-gap: 2em;
+  row-gap: 0;
+  justify-content: space-evenly;
+}
+.developer-container .card .app-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.developer-container .card .app-logo .icon {
+  grid-area: icon;
+  aspect-ratio: 1;
+  width: 10em;
+}
+.developer-container .card .app-logo h2 {
+  color: #fbd12f;
+}
+.developer-container .card .description {
+  grid-area: description;
+}
+#ContactUs {
+  display: grid;
+  row-gap: 1em;
+  padding: 2em;
+}
+#ContactUs h2 {
+  color: #fbd12f;
+}
+#ContactUs label {
+  color: #fbd12f;
+}
+#ContactUs .form-control {
+  margin-top: 0.5em;
+}
+#ContactUs button {
+  float: right;
 }
 .theme-text-color {
   color: #fbd12f !important;

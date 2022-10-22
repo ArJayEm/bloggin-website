@@ -153,6 +153,9 @@ body {
                             gap: 0.5em;
 
                             .event-card {
+                                .description {
+                                    font-size: 0.5rem;
+                                }
 
                                 .thumbnail {
                                     display: none;
@@ -166,13 +169,18 @@ body {
                         width: 100vw;
 
                         a {
-                            width: 100%;
+                            width: 45%;
 
                             .event-card {
                                 width: 100%;
                                 margin: 0 auto;
                                 //max-width: 100%;
                                 //width: unset;
+
+                                p,
+                                strong {
+                                    display: none;
+                                }
                             }
                         }
                     }
@@ -222,6 +230,17 @@ body {
 
                     .social {
                         width: 100%;
+                    }
+                }
+
+                .developer-container {
+                    .card {
+                        grid-template-areas: "icon"
+                            "description";
+                        grid-template-columns: 100%;
+                        column-gap: 0;
+                        row-gap: 2em;
+                        text-align: center;
                     }
                 }
             }
@@ -885,6 +904,10 @@ button.form-control {
     color: @bs-danger-color;
 }
 
+.text-success {
+    color: @bs-success-color;
+}
+
 .passwordStrengthBar {
     height: 1px;
     padding: 0.5em 0;
@@ -1004,7 +1027,7 @@ button.form-control {
             // flex-wrap: nowrap;
             // gap: 0;
             // padding-left: 26em;
-            // width: 100%;        
+            // width: 100%;     
 
             .event-card {
                 //margin: 0;
@@ -1050,6 +1073,38 @@ button.form-control {
 
 .events-container,
 .gallery-container {
+    &.view-event {
+        .event-links.list-view {
+            .card {
+                width: 100%;
+                display: grid;
+                grid-template-areas: "thumbnail description";
+                grid-template-columns: 10em auto;
+
+                &.selected {
+                    background-color: @bs-primary-color;
+                    color: @bs-secondary-bg-color;
+                    scale: 1;
+                }
+
+                .description {
+                    grid-area: description;
+                    font-size: 1rem;
+                }
+
+                .thumbnail {
+                    grid-area: thumbnail;
+                    height: 100%;
+                }
+
+                p,
+                .read-more {
+                    display: none;
+                }
+            }
+        }
+    }
+
     .event-links {
         display: flex;
         //gap: 2em;
@@ -1067,6 +1122,38 @@ button.form-control {
             &:hover,
             &:focus {
                 filter: brightness(90%);
+            }
+        }
+
+        &.list-view {
+            a {
+                width: 100%;
+
+                &.add-card {
+                    aspect-ratio: 16 / 5;
+                }
+
+                .card {
+                    display: grid;
+                    width: unset !important;
+                    grid-template-areas: "thumbnail description";
+                    grid-template-columns: 20em auto;
+
+                    .description {
+                        grid-area: description;
+                        height: 100%;
+
+                        h2,
+                        p {
+                            white-space: normal;
+                        }
+                    }
+
+                    .thumbnail {
+                        grid-area: thumbnail;
+                        height: 100%;
+                    }
+                }
             }
         }
 
@@ -1171,9 +1258,9 @@ button.form-control {
 
     .social a {
         display: flex;
-        justify-content: space-between;
+        //justify-content: space-between;
         align-items: center;
-        gap: 0.5em;
+        gap: 1em;
         margin-bottom: 0.5em;
         color: @bs-primary-color;
 
@@ -1187,6 +1274,63 @@ button.form-control {
             width: 1.5em;
             aspect-ratio: 1;
         }
+    }
+}
+
+.developer-container {
+    width: 100%;
+    margin-top: 1em;
+
+    .card {
+        display: grid;
+        grid-template-areas: "icon description";
+        grid-template-columns: 25% auto;
+        column-gap: 2em;
+        row-gap: 0;
+        justify-content: space-evenly;
+
+        .app-logo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .icon {
+                grid-area: icon;
+                aspect-ratio: 1;
+                width: 10em;
+            }
+
+            h2 {
+                color: @bs-primary-color;
+            }
+        }
+
+        .description {
+            grid-area: description;
+        }
+    }
+}
+
+#ContactUs {
+    display: grid;
+    row-gap: 1em;
+    padding: 2em;
+
+    h2 {
+        color: @bs-primary-color;
+    }
+
+    label {
+        color: @bs-primary-color;
+    }
+
+    .form-control {
+        margin-top: 0.5em;
+    }
+
+    button {
+        float: right;
     }
 }
 

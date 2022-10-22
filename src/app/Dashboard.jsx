@@ -1,8 +1,9 @@
 import React from 'react'
+import UserDashboard from '../pages/UserDashboard'
 
-const Dashboard = () => {
+const Dashboard = ({isLoggedIn}) => {
   return (
-    <div>Dashboard</div>
+    <UserDashboard isLoggedIn={isLoggedIn} />
   )
 }
 

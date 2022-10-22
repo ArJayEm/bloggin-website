@@ -79,7 +79,7 @@ const EventsSection = ({ id, isLoggedIn }) => {
       .classList.contains("dashboard-nav");
 
     var limitedEventCOllection = isDashboard
-      ? eventsCollection.limit(isMobile ? 1 : 3)
+      ? eventsCollection.limit(isMobile ? 4 : 3)
       : eventsCollection;
 
     await limitedEventCOllection
@@ -394,8 +394,8 @@ const EventsSection = ({ id, isLoggedIn }) => {
           </div>
         )} */}
         {id && viewEventSection()}
-        <div className="event-links">
-          {/* {isLoggedIn && (
+        <div className="event-links list-view">
+          {(
             <a
               href="#"
               className="add-card card"
@@ -404,17 +404,18 @@ const EventsSection = ({ id, isLoggedIn }) => {
             >
               <Icon.Plus size={60} /> <span>Add Event</span>
             </a>
-          )} */}
+          )}
           {events &&
             events
               //.filter((e, i) => e.id !== id)
               .map((event, i) => {
-                return event.id !== id ? (
-                  <a href={"/events/" + event.id} key={i}>
-                    <EventCard event={event} index={i} id={id} />
-                  </a>
-                ) : (
-                  <EventCard event={event} index={i} id={id} />
+                return (
+                // event.id !== id ? (
+                //   <a href={"/events/" + event.id} key={i}>
+                //     <EventCard event={event} index={i} id={id} />
+                //   </a>
+                // ) : (
+                  <EventCard isSelected={event.id === id} event={event} index={i} id={id} />
                 );
               })}
         </div>

@@ -15,9 +15,10 @@ import AboutMe from "./pages/AboutMe";
 import Gallery from "./pages/Gallery";
 import Socials from "./pages/Socials";
 import Shop from "./pages/Shop";
+import DeveloperContact from "./pages/DeveloperContact";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(() => false);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => true);
 
   return (
     <>
@@ -35,14 +36,12 @@ function App() {
             <Route exact path="/aboutme" element={<AboutMe />} />
             <Route exact path="/shop" element={<Shop />} />
             <Route exact path="/socials" element={<Socials />} />
+            <Route exact path="/developerContact" element={<DeveloperContact />} />
 
             <Route exact path="/" element={<PrivateRoute />}>
-              <Route
-                path="/"
-                element={<UserDashboard isLoggedIn={isLoggedIn} />}
-              />
+              <Route path="/" element={<UserDashboard />} />
+              <Route path="/admin" element={<Dashboard isLoggedIn={isLoggedIn} />} />
             </Route>
-            <Route path="/" element={<Dashboard />} />
           </Routes>
         </AuthProvider>
       </Router>

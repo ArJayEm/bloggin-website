@@ -10,21 +10,26 @@ import ShopSection from "../section/ShopSection";
 import EventsSection from "../section/EventsSection";
 import { isMobile } from "react-device-detect";
 import { setActiveNavLink } from "../index";
+import DeveloperSection from "../section/DeveloperSection";
 
 const UserDashboard = ({ isLoggedIn }) => {
   const [currentSection, setCurrentSection] = useState(() => "");
 
   var navigationLinks = [
-    { title: "Dashboard", link: "/dashboard", child: <Welcome /> },
-    { title: "About Me", link: "/aboutme", child: <AboutMeSection /> },
+    { title: "Dashboard", link: "/dashboard", child: [<Welcome />] },
+    { title: "About Me", link: "/aboutme", child: [<AboutMeSection />] },
     //{ title: "Gallery" },
     {
       title: "Events",
       link: "/events",
-      child: <EventsSection isLoggedIn={isLoggedIn} />,
+      child: [<EventsSection isLoggedIn={isLoggedIn} />],
     },
-    { title: "Shop", link: "/shop", child: <ShopSection /> },
-    { title: "Socials", link: "/socials", child: <SocialsSection /> },
+    { title: "Shop", link: "/shop", child: [<ShopSection />] },
+    {
+      title: "Socials",
+      link: "/socials",
+      child: [<SocialsSection isLoggedIn={isLoggedIn} />, <DeveloperSection />],
+    },
   ];
 
   var scrollTimer = -1;
@@ -94,7 +99,11 @@ const UserDashboard = ({ isLoggedIn }) => {
                   {e.title}
                 </a>
               </h1>
-              {e.child ? e.child : e.title}
+              {e.child
+                ? e.child.map((child, i) => {
+                    return child;
+                  })
+                : e.title}
             </section>
           );
         })}

@@ -27,3 +27,4 @@ export const githubProvider = new firebase.auth.GithubAuthProvider();
 
 export let usersCollection = firestore.collection("users");
 export let eventsCollection = firestore.collection("events");
+export let socialsCollection = firestore.collection("socials");
