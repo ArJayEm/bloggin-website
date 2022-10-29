@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.cff21449.css",
+    "main.css": "/static/css/main.40b36030.css",
     "main.js": "/static/js/main.2f60d7ce.js",
     "static/media/arjayem_cosplay_mascot_icon_2022_outlined.png": "/static/media/arjayem_cosplay_mascot_icon_2022_outlined.a736b8004961b35e797f.png",
     "static/media/ganknow.ico": "/static/media/ganknow.af4e78ed65b6007601c5.ico",
@@ -8,11 +8,11 @@
     "static/media/youtube.ico": "/static/media/youtube.7d97c644021e0ca08c8d.ico",
     "static/media/twitter.ico": "/static/media/twitter.dd6d4bf8e788c79c2c88.ico",
     "index.html": "/index.html",
-    "main.cff21449.css.map": "/static/css/main.cff21449.css.map",
+    "main.40b36030.css.map": "/static/css/main.40b36030.css.map",
     "main.2f60d7ce.js.map": "/static/js/main.2f60d7ce.js.map"
   },
   "entrypoints": [
-    "static/css/main.cff21449.css",
+    "static/css/main.40b36030.css",
     "static/js/main.2f60d7ce.js"
   ]
 }

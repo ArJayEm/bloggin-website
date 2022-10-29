@@ -216,6 +216,14 @@ html #root.mobile #socials,
 body #root.mobile #socials {
   min-height: fit-content !important;
 }
+html #root.mobile #socials .developer-container .card,
+body #root.mobile #socials .developer-container .card {
+  grid-template-areas: "icon" "description";
+  grid-template-columns: 100%;
+  column-gap: 0;
+  row-gap: 2em;
+  text-align: center;
+}
 html #root.in-modal .card,
 body #root.in-modal .card,
 html #root.in-modal nav,
