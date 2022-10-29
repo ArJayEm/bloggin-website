@@ -16,19 +16,26 @@ const UserDashboard = ({ isLoggedIn }) => {
   const [currentSection, setCurrentSection] = useState(() => "");
 
   var navigationLinks = [
-    { title: "Dashboard", link: "/dashboard", child: [<Welcome />] },
-    { title: "About Me", link: "/aboutme", child: [<AboutMeSection />] },
+    { title: "Dashboard", link: "/dashboard", child: [<Welcome key="0" />] },
+    {
+      title: "About Me",
+      link: "/aboutme",
+      child: [<AboutMeSection key="0" />],
+    },
     //{ title: "Gallery" },
     {
       title: "Events",
       link: "/events",
-      child: [<EventsSection isLoggedIn={isLoggedIn} />],
+      child: [<EventsSection isLoggedIn={isLoggedIn} key="0" />],
     },
-    { title: "Shop", link: "/shop", child: [<ShopSection />] },
+    { title: "Shop", link: "/shop", child: [<ShopSection key="0" />] },
     {
       title: "Socials",
       link: "/socials",
-      child: [<SocialsSection isLoggedIn={isLoggedIn} />, <DeveloperSection />],
+      child: [
+        <SocialsSection isLoggedIn={isLoggedIn} key="0" />,
+        <DeveloperSection key="1class" />,
+      ],
     },
   ];
 

@@ -9,9 +9,9 @@ export default function Socials() {
   return (
     <>
       <Navigation />
-      <Container>
-        <DeveloperSection/>
+      <Container className="socials">
         <SocialsSection />
+        <DeveloperSection/>
       </Container>
     </>
   );

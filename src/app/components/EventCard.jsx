@@ -26,7 +26,7 @@ export default function EventCard({ event, index, id, isSelected }) {
             <span>Attended: {days}</span>
             {/* <span>{event.postedDate}</span> */}
           </h5>
-          <p>{parse(event.description)}</p>
+          {parse(event.description)}
           <strong className="read-more">See more...</strong>
         </div>
         {/* {!id && (

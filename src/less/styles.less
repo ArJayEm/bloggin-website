@@ -215,33 +215,39 @@ body {
                     }
                 }
 
-                // .event-card {
-                //     .thumbnail {
-                //         aspect-ratio: 5 / 3;
-                //     }
-                // }
-
-                .socials-container {
-                    font-size: 1rem;
-
-                    .card {
-                        flex-direction: column;
-                        column-gap: 0;
-                    }
-
-                    .social {
-                        width: 100%;
+                .event-card {
+                    .thumbnail {
+                        aspect-ratio: 1;
                     }
                 }
 
-                .developer-container {
-                    .card {
-                        grid-template-areas: "icon"
-                            "description";
-                        grid-template-columns: 100%;
-                        column-gap: 0;
-                        row-gap: 2em;
-                        text-align: center;
+                &.socials {
+                    grid-template-areas: "developer""sociallinks";
+                    row-gap: 1em;
+                    column-gap: 0;
+
+                    .socials-container {
+                        font-size: 1rem;
+    
+                        .card {
+                            flex-direction: column;
+                            column-gap: 0;
+                        }
+    
+                        .social {
+                            width: 100%;
+                        }
+                    }
+    
+                    .developer-container {
+                        .card {
+                            grid-template-areas: "icon"
+                                "description";
+                            grid-template-columns: 100%;
+                            column-gap: 0;
+                            row-gap: 2em;
+                            text-align: center;
+                        }
                     }
                 }
             }
@@ -249,6 +255,11 @@ body {
             #socials {
                 min-height: fit-content !important;
             }
+
+            // .developer-container {
+            //     margin-bottom: 0;
+            //     margin-top: 1em;
+            // }
         }
 
         &.in-modal {
@@ -1237,8 +1248,17 @@ button.form-control {
     }
 }
 
+.socials {
+    display: grid;
+    grid-template-areas: "developer sociallinks";
+    row-gap: 0;
+    column-gap: 1em;
+    grid-template-rows: max-content;
+}
+
 .socials-container {
     width: 100%;
+    grid-area: sociallinks;
 
     .card {
         display: flex;
@@ -1281,7 +1301,12 @@ button.form-control {
 
 .developer-container {
     width: 100%;
-    margin-bottom: 1em;
+    // margin-bottom: 1em;
+    // margin-top: 0;
+    margin-bottom: 0;
+    margin-top: 1em;
+    grid-area: developer;
+    height: fit-content;
 
     .card {
         display: grid;

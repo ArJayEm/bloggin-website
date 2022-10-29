@@ -18,7 +18,6 @@ import EventCard from "../app/components/EventCard";
 const EventsSection = ({ id, isLoggedIn }) => {
   const [events, setEvents] = useState(() => null);
   const [addEvent, setAddEvent] = useState(() => false);
-  //const [isLoggedIn, setIsLoggedIn] = useState(() => false);
   var maxDate = new Date()
     .toDateString()
     .toDateFormat({ format: "yyyy-mm-dd" });
@@ -46,6 +45,8 @@ const EventsSection = ({ id, isLoggedIn }) => {
     () => {
       //console.log(hasScrollBar);
       getEvents();
+
+      console.log('isLoggedIn:', isLoggedIn);
       // if (id && events) {
       //   //console.log(events.filter((e, i) => e.id === id)[0]);
       //   setEvent(events.filter((e, i) => e.id === id)[0]);
@@ -395,7 +396,7 @@ const EventsSection = ({ id, isLoggedIn }) => {
         )} */}
         {id && viewEventSection()}
         <div className="event-links list-view">
-          {(
+          {isLoggedIn && (
             <a
               href="#"
               className="add-card card"
@@ -415,7 +416,7 @@ const EventsSection = ({ id, isLoggedIn }) => {
                 //     <EventCard event={event} index={i} id={id} />
                 //   </a>
                 // ) : (
-                  <EventCard isSelected={event.id === id} event={event} index={i} id={id} />
+                  <EventCard isSelected={event.id === id} event={event} key={i} index={i} id={id} />
                 );
               })}
         </div>

@@ -181,21 +181,31 @@ html #root.mobile .container .events-container .add-card span,
 body #root.mobile .container .events-container .add-card span {
   font-size: 1rem;
 }
-html #root.mobile .container .socials-container,
-body #root.mobile .container .socials-container {
+html #root.mobile .container .event-card .thumbnail,
+body #root.mobile .container .event-card .thumbnail {
+  aspect-ratio: 1;
+}
+html #root.mobile .container.socials,
+body #root.mobile .container.socials {
+  grid-template-areas: "developer" "sociallinks";
+  row-gap: 1em;
+  column-gap: 0;
+}
+html #root.mobile .container.socials .socials-container,
+body #root.mobile .container.socials .socials-container {
   font-size: 1rem;
 }
-html #root.mobile .container .socials-container .card,
-body #root.mobile .container .socials-container .card {
+html #root.mobile .container.socials .socials-container .card,
+body #root.mobile .container.socials .socials-container .card {
   flex-direction: column;
   column-gap: 0;
 }
-html #root.mobile .container .socials-container .social,
-body #root.mobile .container .socials-container .social {
+html #root.mobile .container.socials .socials-container .social,
+body #root.mobile .container.socials .socials-container .social {
   width: 100%;
 }
-html #root.mobile .container .developer-container .card,
-body #root.mobile .container .developer-container .card {
+html #root.mobile .container.socials .developer-container .card,
+body #root.mobile .container.socials .developer-container .card {
   grid-template-areas: "icon" "description";
   grid-template-columns: 100%;
   column-gap: 0;
@@ -987,8 +997,16 @@ button.form-control:focus {
   color: #fff;
   float: right;
 }
+.socials {
+  display: grid;
+  grid-template-areas: "developer sociallinks";
+  row-gap: 0;
+  column-gap: 1em;
+  grid-template-rows: max-content;
+}
 .socials-container {
   width: 100%;
+  grid-area: sociallinks;
 }
 .socials-container .card {
   display: flex;
@@ -1021,7 +1039,10 @@ button.form-control:focus {
 }
 .developer-container {
   width: 100%;
-  margin-bottom: 1em;
+  margin-bottom: 0;
+  margin-top: 1em;
+  grid-area: developer;
+  height: fit-content;
 }
 .developer-container .card {
   display: grid;

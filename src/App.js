@@ -18,8 +18,6 @@ import Shop from "./pages/Shop";
 import DeveloperContact from "./pages/DeveloperContact";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(() => true);
-
   return (
     <>
       <Router>
@@ -40,7 +38,7 @@ function App() {
 
             <Route exact path="/" element={<PrivateRoute />}>
               <Route path="/" element={<UserDashboard />} />
-              <Route path="/admin" element={<Dashboard isLoggedIn={isLoggedIn} />} />
+              <Route path="/admin" element={<Dashboard/>} />
             </Route>
           </Routes>
         </AuthProvider>
