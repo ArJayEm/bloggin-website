@@ -1079,6 +1079,8 @@ button.form-control {
         justify-content: center;
         align-items: center;
         grid-template-columns: auto auto auto;
+        display: flex;
+        flex-wrap: wrap;
 
         &.album-photo {
             gap: 0.5em;
@@ -1096,15 +1098,30 @@ button.form-control {
         }
 
         .album-card {
-            width: 300px;
+            //width: 300px;
             text-align: center;
 
             .thumbnail {
                 background-color: @bs-primary-bg-color;
-                aspect-ratio: 1;
+                //aspect-ratio: 1;
                 background-position: center;
                 background-size: cover;
                 background-repeat: no-repeat;
+
+                &.landscape {
+                    width: 301.3px;
+                    aspect-ratio: 16 / 9;
+                }
+
+                &.portrait {
+                    width: 95.3px;
+                    aspect-ratio: 9 / 16;
+                }
+
+                &.even {
+                    width: 301.3px;
+                    aspect-ratio: 1;
+                }
             }
 
             .title {

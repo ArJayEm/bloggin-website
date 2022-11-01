@@ -36,6 +36,12 @@ const AlbumsSection = ({ id, isLoggedIn }) => {
     if (id) e.preventDefault();
   }
 
+  var thumbnails = [
+    {url: "https://firebasestorage.googleapis.com/v0/b/blogging-97ff7.appspot.com/o/thumbnails%2FAnime_and_Cosplay_Expo_2022_thumbnail.jpg?alt=media&token=ccfc766b-6b31-4976-a532-50659153ab84", orientation: "portrait"},
+    {url: "https://firebasestorage.googleapis.com/v0/b/blogging-97ff7.appspot.com/o/dashboard%2FTVA%20Agent%20Void%20Loki%20watermarked.jpg?alt=media&token=e519b67e-28ab-4124-b489-958d1b624772", orientation: "landscape"},
+    {url: "https://firebasestorage.googleapis.com/v0/b/blogging-97ff7.appspot.com/o/thumbnails%2FDoctor_Strange_and_the_Multiverse_of_Madness_Premiere_thumbnail.jpg?alt=media&token=4f71078c-b6a9-4685-bb69-d176b5ba9703", orientation: "portrait"},
+  ];
+
   return (
     <>
       <div className="album-container">
@@ -50,7 +56,21 @@ const AlbumsSection = ({ id, isLoggedIn }) => {
             </a>
           ))}
         <div className={"album-grid" + (id ? " album-photo" : "")}>
-          {Array.from(Array(isDashboard ? 3 : 11)).map((card, i) => {
+          {Array.from(Array(isDashboard ? 3 : 55)).map((card, i) => {
+            var index = Math.floor(Math.random() * (3 - 0) + 0)
+            //var thumbnail = ;
+            // var img = new Image();
+            // img.src = thumbnail;
+            // var orientation = "even";
+            // img.onload = function () {
+            //   if (img.naturalWidth > img.naturalHeight) {
+            //     orientation = "landscape";
+            //   } else if (img.naturalWidth < img.naturalHeight) {
+            //     orientation = "portrait";
+            //   } else {
+            //     orientation = "even";
+            //   }
+            // };
             return (
               <a
                 className="album-card"
@@ -62,10 +82,9 @@ const AlbumsSection = ({ id, isLoggedIn }) => {
                 onClick={(e) => onClickCard(e)}
               >
                 <div
-                  className="thumbnail"
+                  className={index + " thumbnail " + thumbnails[index].orientation}
                   style={{
-                    backgroundImage:
-                      "url(https://firebasestorage.googleapis.com/v0/b/blogging-97ff7.appspot.com/o/dashboard%2FTVA%20Agent%20Void%20Loki%20watermarked.jpg?alt=media&token=e519b67e-28ab-4124-b489-958d1b624772)",
+                    backgroundImage: "url(" + thumbnails[index].url + ")",
                   }}
                 ></div>
                 {!id && (

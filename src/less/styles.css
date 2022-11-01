@@ -870,6 +870,8 @@ button.form-control:focus {
   justify-content: center;
   align-items: center;
   grid-template-columns: auto auto auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 .album-container .album-grid.album-photo {
   gap: 0.5em;
@@ -882,15 +884,25 @@ button.form-control:focus {
   display: none;
 }
 .album-container .album-grid .album-card {
-  width: 300px;
   text-align: center;
 }
 .album-container .album-grid .album-card .thumbnail {
   background-color: #041c2d;
-  aspect-ratio: 1;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+.album-container .album-grid .album-card .thumbnail.landscape {
+  width: 301.3px;
+  aspect-ratio: 16 / 9;
+}
+.album-container .album-grid .album-card .thumbnail.portrait {
+  width: 95.3px;
+  aspect-ratio: 9 / 16;
+}
+.album-container .album-grid .album-card .thumbnail.even {
+  width: 301.3px;
+  aspect-ratio: 1;
 }
 .album-container .album-grid .album-card .title {
   color: #fbd12f;
