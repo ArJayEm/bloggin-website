@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState, useEffect } from "react";
+import React from "react";
 import EventsSection from "../section/EventsSection";
 import Navigation from "../app/components/Navigation";
 import { useParams } from "react-router";

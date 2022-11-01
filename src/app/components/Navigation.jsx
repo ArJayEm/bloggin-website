@@ -532,8 +532,9 @@ export default function Navigation({ isDashboard, isLoggedIn }) {
       link: "aboutme",
       icon: <Icon.FilePerson size={25} />,
     },
-    //{ title: "Gallery" },
     { title: "Events", link: "events", icon: <Icon.Collection size={25} /> },
+    // {title: "Gallery", link: "gallery", icon: <Icon.Collection size={25} /> },
+    { title: "Albums", link: "albums", icon: <Icon.Collection size={25} /> },
     { title: "Shop", link: "shop", icon: <Icon.Bag size={25} /> },
     {
       title: "Socials",

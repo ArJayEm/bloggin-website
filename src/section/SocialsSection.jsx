@@ -32,12 +32,12 @@ export default function SocialsSection({ isLoggedIn }) {
   //     filename: "facebook.ico",
   //   },
   //   {
-  //     title: "Youtube.com/ArJayEmCosplay",
+  //     title: "Youtubsocial.com/ArJayEmCosplay",
   //     description: "Youtube",
-  //     link: "www.youtube.com/channel/UCep5khamOUzX5Nu-09jkMbg",
+  //     link: "www.youtubsocial.com/channel/UCep5khamOUzX5Nu-09jkMbg",
   //     iconType: "img",
   //     //icon: youtubeLogo,
-  //     filename: "youtube.ico",
+  //     filename: "youtubsocial.ico",
   //   },
   //   {
   //     title: "Instagram.com/arjayem.cosplay",
@@ -61,7 +61,7 @@ export default function SocialsSection({ isLoggedIn }) {
   //     link: "www.tiktok.com/@arjayem.cosplay",
   //     iconType: "img",
   //     //icon: tiktokLogo,
-  //     filename: "tiktok_circle.png",
+  //     filename: "tiktok_circlsocial.png",
   //   },
   //   {
   //     title: "GankNow.com/ArJayEmCosplay",
@@ -106,19 +106,6 @@ export default function SocialsSection({ isLoggedIn }) {
     []
   );
 
-  // async function saveSocials() {
-  //   socialsArr.forEach((element) => {
-  //     socialsCollection
-  //       .add(element)
-  //       .then((document) => {})
-  //       .catch((e) => {
-  //         var msg = "socials-insert-error: " + e;
-  //         console.error(msg);
-  //         alert(msg);
-  //       });
-  //   });
-  // }
-
   async function getSocials() {
     var col = isLoggedIn
       ? socialsCollection
@@ -137,38 +124,47 @@ export default function SocialsSection({ isLoggedIn }) {
       .then(() => {})
       .catch((e) => {
         var msg = "get-events-error: " + e;
-        console.error(msg);
+        consolsocial.error(msg);
       });
   }
+
+  const handleChange = (chb, checked) => {
+    chb.target.checked = chb.target.checked;
+  };
 
   return (
     <div className="socials-container">
       <div className="card wide">
         {socials &&
-          socials.map((e, i) => {
+          socials.map((social, i) => {
             return (
               <div className="social" key={i}>
                 <a
-                  href={"https://www." + e.link}
+                  href={"https://www." + social.link}
                   key={i}
                   target="_blank"
                   rel="noreferrer noopener"
                 >
-                  {/* {e.iconType === "icon" ? (
-                  e.icon
-                ) : (
-                  <img className="icon" src={e.icon} alt="" />
-                )} */}
                   <img
                     className="icon"
-                    src={`${process.env.PUBLIC_URL}/assets/icons/` + e.filename}
-                    alt={e.filename}
+                    src={
+                      `${process.env.PUBLIC_URL}/assets/icons/` +
+                      social.filename
+                    }
+                    alt={social.filename}
                   />
                   <span>
-                    {e.title}
-                    <small>{e.description}</small>
+                    {social.title}
+                    <small>{social.description}</small>
                   </span>
                 </a>
+                {isLoggedIn && (
+                  <input
+                    type="checkbox"
+                    checked={social.isShown}
+                    onChange={(chb) => handleChange(chb, social.isShown)}
+                  />
+                )}
               </div>
             );
           })}

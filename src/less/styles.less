@@ -215,6 +215,16 @@ body {
                     }
                 }
 
+                .album-container,
+                .gallery-container {
+
+                    .album-grid,
+                    .gallery-grid {
+                        grid-template-rows: auto auto auto;
+                        grid-template-columns: auto;
+                    }
+                }
+
                 .event-card {
                     .thumbnail {
                         aspect-ratio: 1;
@@ -228,17 +238,17 @@ body {
 
                     .socials-container {
                         font-size: 1rem;
-    
+
                         .card {
                             flex-direction: column;
                             column-gap: 0;
                         }
-    
+
                         .social {
                             width: 100%;
                         }
                     }
-    
+
                     .developer-container {
                         .card {
                             grid-template-areas: "icon"
@@ -254,14 +264,15 @@ body {
 
             #socials {
                 min-height: fit-content !important;
+
                 .developer-container {
                     .card {
                         grid-template-areas: "icon"
                             "description";
-                            grid-template-columns: 100%;
-                            column-gap: 0;
-                            row-gap: 2em;
-                            text-align: center;
+                        grid-template-columns: 100%;
+                        column-gap: 0;
+                        row-gap: 2em;
+                        text-align: center;
                     }
                 }
             }
@@ -1030,10 +1041,83 @@ button.form-control {
     }
 }
 
-.gallery-container {
-    .gallery-card {
-        .description {
-            padding-bottom: 0;
+.album-container {
+    display: grid;
+    grid-template-areas: "addalbum""albumgrid";
+    grid-template-columns: auto;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+
+    .add-album,
+    .thumbnail {
+        border-radius: 1em;
+
+        &:hover,
+        &:focus {
+            cursor: pointer;
+            filter: brightness(80%);
+        }
+    }
+
+    .add-album {
+        grid-area: addalbum;
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: @bs-primary-color;
+        background-color: @bs-primary-bg-color;
+        padding: 2em 0;
+    }
+
+    .album-grid {
+        grid-area: albumgrid;
+        display: grid;
+        gap: 1em;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: auto auto auto;
+
+        &.album-photo {
+            gap: 0.5em;
+
+            .album-card {
+                .thumbnail {
+                    border-radius: 0;
+                }
+
+                .title,
+                .description {
+                    display: none;
+                }
+            }
+        }
+
+        .album-card {
+            width: 300px;
+            text-align: center;
+
+            .thumbnail {
+                background-color: @bs-primary-bg-color;
+                aspect-ratio: 1;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            .title {
+                color: @bs-primary-color;
+                margin-top: 0.5em;
+            }
+
+            .description {
+                color: #fff;
+                padding-bottom: 0;
+                font-weight: 500;
+                margin-bottom: 0.5em;
+            }
         }
     }
 }
@@ -1080,6 +1164,7 @@ button.form-control {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 0.5em;
+                justify-content: center;
 
                 iframe {
                     width: 350px;
@@ -1093,8 +1178,7 @@ button.form-control {
     }
 }
 
-.events-container,
-.gallery-container {
+.events-container {
     &.view-event {
         .event-links.list-view {
             .card {
@@ -1331,9 +1415,9 @@ button.form-control {
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            grid-area: icon;
 
             .icon {
-                grid-area: icon;
                 aspect-ratio: 1;
                 width: 10em;
                 background-color: @bs-primary-bg-color;

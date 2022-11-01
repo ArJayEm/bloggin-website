@@ -181,6 +181,17 @@ html #root.mobile .container .events-container .add-card span,
 body #root.mobile .container .events-container .add-card span {
   font-size: 1rem;
 }
+html #root.mobile .container .album-container .album-grid,
+body #root.mobile .container .album-container .album-grid,
+html #root.mobile .container .gallery-container .album-grid,
+body #root.mobile .container .gallery-container .album-grid,
+html #root.mobile .container .album-container .gallery-grid,
+body #root.mobile .container .album-container .gallery-grid,
+html #root.mobile .container .gallery-container .gallery-grid,
+body #root.mobile .container .gallery-container .gallery-grid {
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto;
+}
 html #root.mobile .container .event-card .thumbnail,
 body #root.mobile .container .event-card .thumbnail {
   aspect-ratio: 1;
@@ -822,8 +833,74 @@ button.form-control:focus {
   width: 100%;
   text-shadow: 0 0 6px #000;
 }
-.gallery-container .gallery-card .description {
+.album-container {
+  display: grid;
+  grid-template-areas: "addalbum" "albumgrid";
+  grid-template-columns: auto;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+}
+.album-container .add-album,
+.album-container .thumbnail {
+  border-radius: 1em;
+}
+.album-container .add-album:hover,
+.album-container .thumbnail:hover,
+.album-container .add-album:focus,
+.album-container .thumbnail:focus {
+  cursor: pointer;
+  filter: brightness(80%);
+}
+.album-container .add-album {
+  grid-area: addalbum;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fbd12f;
+  background-color: #041c2d;
+  padding: 2em 0;
+}
+.album-container .album-grid {
+  grid-area: albumgrid;
+  display: grid;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: auto auto auto;
+}
+.album-container .album-grid.album-photo {
+  gap: 0.5em;
+}
+.album-container .album-grid.album-photo .album-card .thumbnail {
+  border-radius: 0;
+}
+.album-container .album-grid.album-photo .album-card .title,
+.album-container .album-grid.album-photo .album-card .description {
+  display: none;
+}
+.album-container .album-grid .album-card {
+  width: 300px;
+  text-align: center;
+}
+.album-container .album-grid .album-card .thumbnail {
+  background-color: #041c2d;
+  aspect-ratio: 1;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.album-container .album-grid .album-card .title {
+  color: #fbd12f;
+  margin-top: 0.5em;
+}
+.album-container .album-grid .album-card .description {
+  color: #fff;
   padding-bottom: 0;
+  font-weight: 500;
+  margin-bottom: 0.5em;
 }
 .events-container.view-event {
   display: flex;
@@ -852,6 +929,7 @@ button.form-control:focus {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5em;
+  justify-content: center;
 }
 .events-container.view-event .event .fb-albums iframe {
   width: 350px;
@@ -859,89 +937,70 @@ button.form-control:focus {
   overflow: hidden;
   background-color: #08324c;
 }
-.events-container.view-event .event-links.list-view .card,
-.gallery-container.view-event .event-links.list-view .card {
+.events-container.view-event .event-links.list-view .card {
   width: 100%;
   display: grid;
   grid-template-areas: "thumbnail description";
   grid-template-columns: 10em auto;
 }
-.events-container.view-event .event-links.list-view .card.selected,
-.gallery-container.view-event .event-links.list-view .card.selected {
+.events-container.view-event .event-links.list-view .card.selected {
   background-color: #fbd12f;
   color: #08324c;
   scale: 1;
 }
-.events-container.view-event .event-links.list-view .card .description,
-.gallery-container.view-event .event-links.list-view .card .description {
+.events-container.view-event .event-links.list-view .card .description {
   grid-area: description;
   font-size: 1rem;
 }
-.events-container.view-event .event-links.list-view .card .thumbnail,
-.gallery-container.view-event .event-links.list-view .card .thumbnail {
+.events-container.view-event .event-links.list-view .card .thumbnail {
   grid-area: thumbnail;
   height: 100%;
 }
 .events-container.view-event .event-links.list-view .card p,
-.gallery-container.view-event .event-links.list-view .card p,
-.events-container.view-event .event-links.list-view .card .read-more,
-.gallery-container.view-event .event-links.list-view .card .read-more {
+.events-container.view-event .event-links.list-view .card .read-more {
   display: none;
 }
-.events-container .event-links,
-.gallery-container .event-links {
+.events-container .event-links {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   order: 5;
 }
-.events-container .event-links .add-card,
-.gallery-container .event-links .add-card {
+.events-container .event-links .add-card {
   aspect-ratio: 1;
   height: 90%;
   scale: 0.95;
 }
 .events-container .event-links .add-card:active,
-.gallery-container .event-links .add-card:active,
 .events-container .event-links .add-card:hover,
-.gallery-container .event-links .add-card:hover,
-.events-container .event-links .add-card:focus,
-.gallery-container .event-links .add-card:focus {
+.events-container .event-links .add-card:focus {
   filter: brightness(90%);
 }
-.events-container .event-links.list-view a,
-.gallery-container .event-links.list-view a {
+.events-container .event-links.list-view a {
   width: 100%;
 }
-.events-container .event-links.list-view a.add-card,
-.gallery-container .event-links.list-view a.add-card {
+.events-container .event-links.list-view a.add-card {
   aspect-ratio: 16 / 5;
 }
-.events-container .event-links.list-view a .card,
-.gallery-container .event-links.list-view a .card {
+.events-container .event-links.list-view a .card {
   display: grid;
   width: unset !important;
   grid-template-areas: "thumbnail description";
   grid-template-columns: 20em auto;
 }
-.events-container .event-links.list-view a .card .description,
-.gallery-container .event-links.list-view a .card .description {
+.events-container .event-links.list-view a .card .description {
   grid-area: description;
   height: 100%;
 }
 .events-container .event-links.list-view a .card .description h2,
-.gallery-container .event-links.list-view a .card .description h2,
-.events-container .event-links.list-view a .card .description p,
-.gallery-container .event-links.list-view a .card .description p {
+.events-container .event-links.list-view a .card .description p {
   white-space: normal;
 }
-.events-container .event-links.list-view a .card .thumbnail,
-.gallery-container .event-links.list-view a .card .thumbnail {
+.events-container .event-links.list-view a .card .thumbnail {
   grid-area: thumbnail;
   height: 100%;
 }
-.events-container .event-links .event-card,
-.gallery-container .event-links .event-card {
+.events-container .event-links .event-card {
   padding: 0;
   color: #fbd12f;
   overflow: hidden;
@@ -952,56 +1011,46 @@ button.form-control:focus {
   max-height: 100%;
 }
 .events-container .event-links .event-card:active,
-.gallery-container .event-links .event-card:active,
 .events-container .event-links .event-card:hover,
-.gallery-container .event-links .event-card:hover,
-.events-container .event-links .event-card:focus,
-.gallery-container .event-links .event-card:focus {
+.events-container .event-links .event-card:focus {
   filter: brightness(90%);
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
   scale: 1;
 }
-.events-container .event-links .event-card .description,
-.gallery-container .event-links .event-card .description {
+.events-container .event-links .event-card .description {
   width: 100%;
   padding: 1em;
   text-align: left;
   height: fit-content;
 }
-.events-container .event-links .event-card .description h2,
-.gallery-container .event-links .event-card .description h2 {
+.events-container .event-links .event-card .description h2 {
   text-transform: uppercase;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.events-container .event-links .event-card .description h5,
-.gallery-container .event-links .event-card .description h5 {
+.events-container .event-links .event-card .description h5 {
   display: flex;
   justify-content: space-between;
 }
-.events-container .event-links .event-card .description h5 span,
-.gallery-container .event-links .event-card .description h5 span {
+.events-container .event-links .event-card .description h5 span {
   color: #fff;
 }
-.events-container .event-links .event-card .description p,
-.gallery-container .event-links .event-card .description p {
+.events-container .event-links .event-card .description p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: inherit;
   transition: height 0.5s ease-in-out;
 }
-.events-container .event-links .event-card .thumbnail,
-.gallery-container .event-links .event-card .thumbnail {
+.events-container .event-links .event-card .thumbnail {
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   aspect-ratio: 5 / 3;
 }
-.events-container .event-links .event-card .read-more,
-.gallery-container .event-links .event-card .read-more {
+.events-container .event-links .event-card .read-more {
   color: #fff;
   float: right;
 }
@@ -1065,9 +1114,9 @@ button.form-control:focus {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  grid-area: icon;
 }
 .developer-container .card .app-logo .icon {
-  grid-area: icon;
   aspect-ratio: 1;
   width: 10em;
   background-color: #041c2d;

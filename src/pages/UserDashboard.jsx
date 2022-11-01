@@ -11,6 +11,8 @@ import EventsSection from "../section/EventsSection";
 import { isMobile } from "react-device-detect";
 import { setActiveNavLink } from "../index";
 import DeveloperSection from "../section/DeveloperSection";
+import GallerySection from "../section/GallerySection";
+import AlbumsSection from "../section/AlbumsSection";
 
 const UserDashboard = ({ isLoggedIn }) => {
   const [currentSection, setCurrentSection] = useState(() => "");
@@ -28,13 +30,19 @@ const UserDashboard = ({ isLoggedIn }) => {
       link: "/events",
       child: [<EventsSection isLoggedIn={isLoggedIn} key="0" />],
     },
+    //{ title: "Gallery", link: "/gallery", child: [<GallerySection key="0" />] },
+    {
+      title: "Albums",
+      link: "/albums",
+      child: [<AlbumsSection isLoggedIn={isLoggedIn} key="0" />],
+    },
     { title: "Shop", link: "/shop", child: [<ShopSection key="0" />] },
     {
       title: "Socials",
       link: "/socials",
       child: [
         <SocialsSection isLoggedIn={isLoggedIn} key="0" />,
-        <DeveloperSection key="1class" />,
+        <DeveloperSection key="1" />,
       ],
     },
   ];
@@ -71,9 +79,11 @@ const UserDashboard = ({ isLoggedIn }) => {
             .classList.add("active");
           setCurrentSection("socials");
         } else {
-          document
-            .querySelector("nav li a[href='#" + id + "']")
-            .classList.add("active");
+          var nav = document.querySelector("nav li a[href='#" + id + "']");
+
+          if (nav.classList.length > 0) {
+            nav.classList.add("active");
+          }
         }
         if (isMobile) {
           setActiveNavLink(currentSection);

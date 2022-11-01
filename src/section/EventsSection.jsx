@@ -1,19 +1,17 @@
 /* eslint-disable */
-import React, { useState, useEffect } from "react";
-import { eventsCollection, firestore } from "../firebase";
-import { isBrowser, isMobile } from "react-device-detect";
-import * as Icon from "react-bootstrap-icons";
-import { imageLoading } from "../icons/index";
-import FileUploader from "../app/components/FileUploader";
 import {
-  getStorage,
+  getDownloadURL, getStorage,
   ref,
-  uploadBytesResumable,
-  getDownloadURL,
+  uploadBytesResumable
 } from "firebase/storage";
+import React, { useEffect, useState } from "react";
+import * as Icon from "react-bootstrap-icons";
+import { isMobile } from "react-device-detect";
+import EventCard from "../app/components/EventCard";
+import FileUploader from "../app/components/FileUploader";
+import { eventsCollection } from "../firebase";
 import { loadImage } from "../index";
 import Event from "../pages/Event";
-import EventCard from "../app/components/EventCard";
 
 const EventsSection = ({ id, isLoggedIn }) => {
   const [events, setEvents] = useState(() => null);
@@ -43,14 +41,7 @@ const EventsSection = ({ id, isLoggedIn }) => {
 
   useEffect(
     () => {
-      //console.log(hasScrollBar);
       getEvents();
-
-      console.log('isLoggedIn:', isLoggedIn);
-      // if (id && events) {
-      //   //console.log(events.filter((e, i) => e.id === id)[0]);
-      //   setEvent(events.filter((e, i) => e.id === id)[0]);
-      // }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
