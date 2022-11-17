@@ -7,3 +7,5 @@ export { default as gankNowLogo } from "./ganknow.ico";
 export { default as cosplayManiaLogo } from "./cosplaymania_logo.jpg";
 export { default as pinterestLogo } from "./pinterest.png";
 export { default as imageLoading } from "./image-loading.png";
+export { default as arjayemLogo } from "./arjayem_cosplay_mascot_icon_2022_outlined.png";
+export { default as cosedemiaLogo } from "./cosedemia.png";
