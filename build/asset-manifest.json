@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.5a453f58.css",
-    "main.js": "/static/js/main.074b5cb3.js",
+    "main.css": "/static/css/main.dd4c71c6.css",
+    "main.js": "/static/js/main.9abe4b6a.js",
     "static/js/510.26939806.chunk.js": "/static/js/510.26939806.chunk.js",
     "static/js/38.afefd28a.chunk.js": "/static/js/38.afefd28a.chunk.js",
     "static/media/arjayem_cosplay_mascot_icon_2022_outlined.png": "/static/media/arjayem_cosplay_mascot_icon_2022_outlined.a736b8004961b35e797f.png",
@@ -11,13 +11,13 @@
     "static/media/youtube.ico": "/static/media/youtube.7d97c644021e0ca08c8d.ico",
     "static/media/twitter.ico": "/static/media/twitter.dd6d4bf8e788c79c2c88.ico",
     "index.html": "/index.html",
-    "main.5a453f58.css.map": "/static/css/main.5a453f58.css.map",
-    "main.074b5cb3.js.map": "/static/js/main.074b5cb3.js.map",
+    "main.dd4c71c6.css.map": "/static/css/main.dd4c71c6.css.map",
+    "main.9abe4b6a.js.map": "/static/js/main.9abe4b6a.js.map",
     "510.26939806.chunk.js.map": "/static/js/510.26939806.chunk.js.map",
     "38.afefd28a.chunk.js.map": "/static/js/38.afefd28a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a453f58.css",
-    "static/js/main.074b5cb3.js"
+    "static/css/main.dd4c71c6.css",
+    "static/js/main.9abe4b6a.js"
   ]
 }

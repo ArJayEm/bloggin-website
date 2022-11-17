@@ -50,6 +50,8 @@ function App() {
             <Route exact path="/" element={<PrivateRoute />}>
               <Route path="/" element={<UserDashboard />} />
               <Route path="/admin" element={<Dashboard />} />
+              <Route exact path="/admin/socials" element={<Socials />} />
+              <Route exact path="/admin/albums" element={<Albums />} />
             </Route>
           </Routes>
         </AuthProvider>
